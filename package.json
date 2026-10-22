@@ -1,5 +1,5 @@
 {
-  "name": "jotform-gtm-listener",
+  "name": "jotform-gtm-form-tracker",
   "version": "3.3.0-jotform.1",
   "description": "GTM listener that pushes jotform_form_success on confirmed Jotform submissions, including redirect mode. Part of UFT (Universal Form Tracking).",
   "license": "MIT",
