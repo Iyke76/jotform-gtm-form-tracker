@@ -1,0 +1,11 @@
+{
+  "name": "jotform-gtm-listener",
+  "version": "3.3.0-jotform.1",
+  "description": "GTM listener that pushes jotform_form_success on confirmed Jotform submissions, including redirect mode. Part of UFT (Universal Form Tracking).",
+  "license": "MIT",
+  "author": "Iyke Abel",
+  "private": true,
+  "scripts": { "test": "node test/uft-jotform-tests.js" },
+  "devDependencies": { "jsdom": "^24.0.0", "acorn": "^8.11.0", "acorn-walk": "^8.3.0", "terser": "^5.27.0" },
+  "keywords": ["jotform", "google-tag-manager", "gtm", "ga4", "enhanced-conversions", "form-tracking", "datalayer"]
+}
