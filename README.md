@@ -90,4 +90,4 @@ Jotform users and the Jotform support forum documented the `submission-completed
 
 ## License
 
-MIT © Iyke Abel · [LinkedIn](https://www.linkedin.com/in/iykeabel/)
+MIT © Iyke Abel · [LinkedIn](https://www.linkedin.com/in/iyke-abel-digital-analyst)
