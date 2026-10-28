@@ -33,7 +33,7 @@ If you need Enhanced Conversions, ask whoever manages the site to switch to Jotf
 
 1. In GTM, create a **Custom HTML** tag. Paste `dist/uft-jotform-standalone-v3.3.0-jotform.1.html`. Trigger: **All Pages**. Tag firing option: **Once per page**. The tag must also run on the page the form redirects to.
 2. Create a **Custom Event** trigger with the regex `^jotform_form_success$`. Use `^jotform_form_(success|failed)$` if you want failures too.
-3. Create Data Layer variables for the `ec_*` keys you need (`ec_email`, `ec_phone`, `ec_first_name`, `ec_last_name`, `ec_form_id`, `ec_event_id`, `ec_detection_method`, …).
+3. Create Data Layer variables for the keys you need (`ec_email`, `ec_phone`, `ec_first_name`, `ec_last_name`, `form_id`, `ec_event_id`, `ec_detection_method`, ...). Note the form identifier is `form_id`, not `ec_form_id`.
 4. Retire any thank-you page-view conversion so leads aren't counted twice.
 
 ### Config (`window.EC_FORM_CONFIG`, at the top of the tag)
