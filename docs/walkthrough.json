@@ -21,7 +21,7 @@
   ],
   [
    "Step 3: Send it to GA4",
-   "<p>Create a <strong>GA4 Event</strong> tag on the trigger with <code>form_id</code>, <code>form_cta</code>, <code>form_position</code> and <code>form_platform</code> as parameters. The form identifier is <code>form_id</code>, not <code>ec_form_id</code>.</p>[[img:jot-ga4-tag|Form details only. This account also sends a service and ZIP from its own variables.]]<p>Keep the <code>ec_*</code> contact keys out of this tag.</p>"
+   "<p>Create a <strong>GA4 Event</strong> tag on the trigger with <code>form_id</code>, <code>form_cta</code>, <code>form_position</code> and <code>form_platform</code> as parameters. The form identifier is <code>form_id</code>, not <code>ec_form_id</code>.</p>[[img:jot-ga4-tag|Form details only. This account also sends a service and ZIP from its own variables.]]<p>Keep the <code>ec_*</code> contact keys out of this tag.</p><p><strong>Want these in reports?</strong> GA4 won't show them until you register each one as a custom dimension. <a href=\"https://iyrexmedia.com/gravity-forms-gtm-tracking/#ga4-dimensions\">Here's how</a>.</p>"
   ],
   [
    "Step 4: Add Google Ads and Enhanced Conversions",
