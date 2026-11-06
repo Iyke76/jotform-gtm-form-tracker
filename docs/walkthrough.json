@@ -9,11 +9,11 @@
   ],
   [
    "Check how the form is embedded",
-   "<p>This is the one Jotform setting that changes what you get, so check it first. It decides whether contact data is possible at all:</p><div class=\"bc-table\"><table><thead><tr><th>Embed</th><th>Success event</th><th>Contact data</th></tr></thead><tbody><tr><td>Iframe, JavaScript or lightbox</td><td>Yes</td><td>No. The fields are on another origin, so the page can't read them</td></tr><tr><td>Source Code</td><td>Yes</td><td>Yes: email, phone, first and last name, and address</td></tr></tbody></table></div><p>To check, search the page source for <code>jotform-form</code>. A source embed has the form in the page itself. If you need Enhanced Conversions and it's an iframe, ask whoever manages the site to re-embed it through <strong>Embed &gt; Source Code</strong> in Jotform. Failure events also need the source embed, since an iframe posts nothing when validation fails.</p>"
+   "<p>This is the one Jotform setting that changes what you get, so check it first. It decides whether contact data is possible at all:</p><div class=\"bc-table\"><table><thead><tr><th>Embed</th><th>Success event</th><th>Contact data</th></tr></thead><tbody><tr><td>Iframe, JavaScript or lightbox</td><td>Yes</td><td>No. The fields are on another origin, so the page can't read them</td></tr><tr><td>Source Code</td><td>Yes</td><td>Yes: email, phone, first and last name, and address</td></tr></tbody></table></div><p>To check, search the page source for <code>jotform-form</code>. A source embed has the form in the page itself. If you need Enhanced Conversions (a Google Ads feature that uses a lead's contact details to match them to ad clicks) and it's an iframe, ask whoever manages the site to re-embed it through <strong>Embed &gt; Source Code</strong> in Jotform. Failure events also need the source embed, since an iframe posts nothing when validation fails.</p>"
   ],
   [
    "Step 1: Add the listener tag",
-   "<ol><li><a class=\"uft-download\" href=\"https://iyrexmedia.com/wp-content/uploads/gtm-form-listeners/jotform-form-tracker-v3.3.0-jotform.1.gtm.txt\" download>Download the GTM tag</a>, or get it from <a href=\"https://github.com/Iyke76/jotform-gtm-form-tracker\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</li><li>In GTM, go to <strong>Tags &gt; New &gt; Custom HTML</strong> and paste it.</li><li>Trigger it on <strong>All Pages</strong>, with the firing option set to <strong>Once per page</strong>.</li></ol><p>All Pages matters more here than on other platforms, because the tag has to be running on the thank-you page to see the referrer.</p>[[img:jot-listener-tag|The listener tag on All Pages.]]"
+   "<ol><li><a class=\"uft-download\" href=\"https://iyrexmedia.com/wp-content/uploads/gtm-form-listeners/jotform-form-tracker-v3.3.0-jotform.1.gtm.txt\" download>Download the GTM tag</a>, or get it from <a href=\"https://github.com/Iyke76/jotform-gtm-form-tracker\" target=\"_blank\" rel=\"noopener\">GitHub</a>.</li><li>In GTM (Google Tag Manager, a free tool that adds tracking to a site without editing its code), go to <strong>Tags &gt; New &gt; Custom HTML (the GTM option for pasting in a script)</strong> and paste it.</li><li>Trigger it on <strong>All Pages</strong>, with the firing option set to <strong>Once per page</strong>.</li></ol><p>All Pages matters more here than on other platforms, because the tag has to be running on the thank-you page to see the referrer.</p>[[img:jot-listener-tag|The listener tag on All Pages.]]"
   ],
   [
    "Step 2: Create the trigger",
@@ -21,7 +21,7 @@
   ],
   [
    "Step 3: Send it to GA4",
-   "<p>Create a <strong>GA4 Event</strong> tag on the trigger with <code>form_id</code>, <code>form_cta</code>, <code>form_position</code> and <code>form_platform</code> as parameters. The form identifier is <code>form_id</code>, not <code>ec_form_id</code>.</p>[[img:jot-ga4-tag|Form details only. This account also sends a service and ZIP from its own variables.]]<p>Keep the <code>ec_*</code> contact keys out of this tag.</p><p><strong>Want these in reports?</strong> GA4 won't show them until you register each one as a custom dimension. <a href=\"https://iyrexmedia.com/gravity-forms-gtm-tracking/#ga4-dimensions\">Here's how</a>.</p>"
+   "<p>Create a <strong>GA4 Event</strong> tag on the trigger (the rule that tells a tag when to run) with <code>form_id</code>, <code>form_cta</code>, <code>form_position</code> and <code>form_platform</code> as parameters. The form identifier is <code>form_id</code>, not <code>ec_form_id</code>.</p>[[img:jot-ga4-tag|Form details only. This account also sends a service and ZIP from its own variables.]]<p>Keep the <code>ec_*</code> contact keys out of this tag.</p><p><strong>Want these in reports?</strong> GA4 won't show them until you register each one as a custom dimension. <a href=\"https://iyrexmedia.com/gravity-forms-gtm-tracking/#ga4-dimensions\">Here's how</a>.</p>"
   ],
   [
    "Step 4: Add Google Ads and Enhanced Conversions",
@@ -29,7 +29,7 @@
   ],
   [
    "Step 5: Test, then publish",
-   "<ol><li>In <strong>Preview</strong>, load the form page and expect <code>ec_tracker_initialized</code>.</li><li>Submit a labelled test lead and follow it to the thank-you page. Expect one <code>jotform_form_success</code>, and check <code>ec_detection_method</code>.</li><li>Refresh the thank-you page. Nothing new should fire. This is the check the old trigger fails.</li><li>Open the thank-you URL directly in a new tab. Nothing should fire there either.</li><li>On a source embed, open the event and check the <code>ec_*</code> values.</li></ol><p>Then remove any page-view conversion on the thank-you URL, or each lead counts twice. Run <code>window._ecFormTrackers.jotform.status()</code> in the console if anything looks off.</p>"
+   "<ol><li>In <strong>Preview</strong> (GTM's test mode), load the form page and expect <code>ec_tracker_initialized</code>.</li><li>Submit a labelled test lead and follow it to the thank-you page. Expect one <code>jotform_form_success</code>, and check <code>ec_detection_method</code>.</li><li>Refresh the thank-you page. Nothing new should fire. This is the check the old trigger fails.</li><li>Open the thank-you URL directly in a new tab. Nothing should fire there either.</li><li>On a source embed, open the event and check the <code>ec_*</code> values.</li></ol><p>Then remove any page-view conversion on the thank-you URL, or each lead counts twice. Run <code>window._ecFormTrackers.jotform.status()</code> in the console if anything looks off.</p>"
   ],
   [
    "What to know",
@@ -48,5 +48,6 @@
   "slug": "jotform-gtm-tracking",
   "card": "Jotform's completion message never fired on a form that redirects. Here's the GTM setup that catches those leads without counting refreshes."
  },
- "related": "<p><strong>Related:</strong> <a href=\"https://iyrexmedia.com/gtm-form-listeners/jotform/\">Jotform listener</a> · <a href=\"https://iyrexmedia.com/gravity-forms-gtm-tracking/\">Gravity Forms walkthrough</a> · <a href=\"https://iyrexmedia.com/universal-gtm-form-tracking-listener/\">Universal form tracking walkthrough</a></p>"
+ "related": "<p><strong>Related:</strong> <a href=\"https://iyrexmedia.com/gtm-form-listeners/jotform/\">Jotform listener</a> · <a href=\"https://iyrexmedia.com/gravity-forms-gtm-tracking/\">Gravity Forms walkthrough</a> · <a href=\"https://iyrexmedia.com/universal-gtm-form-tracking-listener/\">Universal form tracking walkthrough</a></p>",
+ "business": "<p>If your Jotform sends people to a thank-you page, a common setup counts every reload of that page as a new lead. That makes your ads look better than they are. This setup counts the submission without counting those reloads, so your lead numbers are closer to what your sales team actually gets.</p><p>The steps below are for whoever installs it, so you can hand this page to your developer or marketer.</p>"
 }
