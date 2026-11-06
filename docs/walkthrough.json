@@ -1,7 +1,7 @@
 {
  "title": "How to Track Jotform in GTM When the Form Redirects",
  "intro": "<p>Every guide I found said the same thing: Jotform posts a <code>submission-completed</code> message when a form is done, so listen for it. So I logged the messages from a real submission on a live site.</p><p>The iframe posted <code>setHeight</code> and <code>formSettled</code>. Then the whole page navigated to the thank-you page. <code>submission-completed</code> never came.</p><p>That form redirects, and a listener waiting for that message would have stayed silent on every lead. The fallback most people use, a page-view trigger on the thank-you URL, has the opposite problem. It also fires on every reload, back-button visit and shared link.</p><p>Here's the setup I use instead, from a real container with the names removed.</p>",
- "tldr": "<p>Add one free Custom HTML tag on All Pages and trigger on <code>jotform_form_success</code>. It works for forms that redirect, and doesn't fire on a refresh or direct visit. Iframe embeds give you the event but no contact data. For Enhanced Conversions, the form has to use Jotform's Source Code embed.</p>",
+ "tldr": "<p>This free script counts a Jotform lead when the form redirects, and it won't count page refreshes or shared links. How the form is embedded matters: an iframe gives you the lead count but no contact details. To send contact details to Google Ads, use Jotform's Source Code embed.</p>",
  "sections": [
   [
    "Why the usual recipes miss it",
