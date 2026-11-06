@@ -34,6 +34,10 @@
   [
    "What to know",
    "<ul><li>I confirmed <code>submit_referrer</code> on a real redirecting form. I haven't seen <code>postmessage</code> live, because that site doesn't use the Thank You screen. If yours does, test it with <code>debug: true</code>.</li><li>The current build passes all 88 of its jsdom checks, including one using real source embed markup. Test on your own form too.</li><li>A thank-you page on a different domain isn't covered. Nor is a Jotform iframe nested in another cross-origin frame, like some Wix or Squarespace HTML embeds.</li><li>WP Rocket's \"Delay JavaScript execution\" can hold GTM back until the visitor interacts. Someone who lands on the thank-you page and doesn't scroll never loads GTM, so exclude it.</li><li>The same form embedded twice shares one form ID. Clone the form in Jotform if you want to report on them separately.</li><li>Enterprise custom submit domains need <code>jotformSubmitHosts</code>.</li></ul>"
+  ],
+  [
+   "Frequently asked questions",
+   "<h3>Can Google Tag Manager see inside a Jotform iframe?</h3><p>No. The fields are on another origin. The listener can still detect the submission, but contact data needs the Source Code embed.</p><h3>How do I set up Jotform Google Ads conversion tracking?</h3><p>Put your Google Ads conversion tag on <code>jotform_form_success</code> instead of a thank-you page view. Then refreshes and shared links won't count as conversions.</p>"
   ]
  ],
  "closing": "<p>If you'd rather have this installed and checked for you, I can help.</p>",
